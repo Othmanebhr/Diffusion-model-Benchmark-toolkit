@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://stagingos.local/schemas/prompt-catalog-v1.json",
+  "title": "StagingOS prompt catalog",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "catalog_version",
+    "source",
+    "style_mapping",
+    "production_guardrails",
+    "room_types",
+    "style_variants",
+    "furniture_anchors",
+    "no_furniture",
+    "pilot",
+    "evaluation"
+  ],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "catalog_version": { "type": "string", "minLength": 1 },
+    "source": {
+      "type": "object",
+      "required": ["file_name", "sha256"],
+      "properties": {
+        "file_name": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      },
+      "additionalProperties": false
+    },
+    "style_variants": {
+      "type": "array",
+      "minItems": 180,
+      "items": {
+        "type": "object",
+        "required": [
+          "variant_id",
+          "prompt_ref",
+          "style_id",
+          "style_number",
+          "cluster_id",
+          "blocks"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}
+

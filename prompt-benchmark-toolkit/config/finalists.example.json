@@ -1,0 +1,12 @@
+{
+  "style_variant_ids": [
+    "MA-P01",
+    "TA-P01",
+    "MI-P01",
+    "TI-P01",
+    "MO-P01",
+    "CO-P01"
+  ],
+  "no_furniture_variant_ids": ["NF-P01"]
+}
+

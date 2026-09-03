@@ -1,0 +1,13 @@
+{
+  "catalog_version": "v3",
+  "source_sha256": "418bfcca18a1c5055693a2ae5236eb1a82aef830f45450319da0acf9a9a0e117",
+  "room_type_count": 3,
+  "style_count": 6,
+  "style_variant_count": 180,
+  "furniture_anchor_count": 108,
+  "no_furniture_variant_count": 30,
+  "style_pilot_case_count": 360,
+  "no_furniture_pilot_case_count": 60,
+  "assembled_prompt_mismatches": [],
+  "valid": true
+}
