@@ -1,0 +1,20 @@
+{
+  "sources": [
+    {
+      "source_image_id": "living-diner-001",
+      "room_type": "living_diner_room",
+      "path": "/absolute/path/on/runpod/benchmark-images/living-diner-001.jpg"
+    },
+    {
+      "source_image_id": "bedroom-001",
+      "room_type": "bedroom",
+      "path": "/absolute/path/on/runpod/benchmark-images/bedroom-001.jpg"
+    },
+    {
+      "source_image_id": "studio-001",
+      "room_type": "studio",
+      "path": "/absolute/path/on/runpod/benchmark-images/studio-001.jpg"
+    }
+  ]
+}
+

@@ -1,0 +1,158 @@
+{
+  "living_room_prompts": [
+    {
+      "id": 1,
+      "style": "Warm Modern Arabic",
+      "prompt": "Transform this room into a sophisticated modern Arabic interior while preserving the exact architecture, room layout, camera perspective, walls, windows, doors, flooring and lighting conditions. Add a large elegant contemporary sofa in warm beige fabric, a low wooden coffee table, a soft textured area rug, several decorative cushions with subtle geometric Arabic patterns, a large indoor plant, and refined wall artwork inspired by modern Middle Eastern design. Add warm ambient lighting with elegant floor and table lamps. Create a luxurious but natural real-estate interior, tasteful, spacious and photorealistic."
+    },
+    {
+      "id": 2,
+      "style": "Luxury Arabic",
+      "prompt": "Virtually stage this room in a luxurious contemporary Arabic style. Keep the original room architecture, proportions, perspective, windows, doors and flooring completely unchanged. Replace the existing sofa with a large sophisticated cream-colored modular sofa with elegant cushions. Add a refined marble and brass coffee table, a large neutral rug with subtle geometric patterns, contemporary Arabic-inspired artwork, decorative objects and a tall indoor plant. Add a statement modern chandelier and warm indirect lighting. The result should feel high-end, elegant, modern and photorealistic without looking overly decorated."
+    },
+    {
+      "id": 3,
+      "style": "Minimalist Arabic",
+      "prompt": "Redesign this empty room as a minimalist modern Arabic living space. Preserve the existing architecture, geometry, perspective, windows, doors and floor exactly as they are. Add a low-profile beige sofa, a simple round wooden coffee table, a soft neutral rug, one large sculptural indoor plant and a few carefully selected decorative objects. Place one large contemporary abstract artwork with subtle Middle Eastern geometric influences on the wall. Add a modern floor lamp with warm light. Use natural beige, sand, cream, walnut and muted earth tones. Clean, sophisticated, spacious and photorealistic."
+    },
+    {
+      "id": 4,
+      "style": "Contemporary Middle Eastern Luxury",
+      "prompt": "Create a contemporary Middle Eastern luxury living room from this image while keeping the original room structure and camera angle unchanged. Add a large elegant taupe sofa with textured cushions, a sculptural coffee table combining wood and stone, a large premium rug with subtle Arabic geometric motifs, and sophisticated decorative accessories. Add two modern wall artworks, a statement pendant chandelier and elegant accent lamps. Include a large green indoor plant in a refined ceramic planter. Use warm neutral colors, natural materials, brass accents and soft cinematic interior lighting. Photorealistic real-estate virtual staging."
+    },
+    {
+      "id": 5,
+      "style": "Elegant Arabic Family Living Room",
+      "prompt": "Virtually furnish this room as a warm and elegant modern Arabic family living room. Do not alter the architecture, walls, windows, doors, floor, ceiling or perspective. Add a comfortable large L-shaped cream sofa with tasteful cushions, a wooden coffee table, a large textured beige rug and a modern television mounted naturally on the main wall. Add a low TV console, subtle Arabic-inspired decorative objects, framed contemporary artwork and several indoor plants. Include a modern floor lamp and warm ceiling lighting. Make the space inviting, realistic, functional and premium while maintaining plenty of open space."
+    },
+    {
+      "id": 6,
+      "style": "High-End Neutral Arabic",
+      "prompt": "Transform this room into a high-end contemporary Arabic interior using a refined neutral palette. Preserve every architectural element and the exact perspective of the original image. Add a luxurious ivory sofa with soft rounded shapes, a large textured rug, a sculptural stone coffee table, a modern television with a minimalist media console, elegant decorative objects and a large indoor olive tree. Add sophisticated abstract artwork inspired by Middle Eastern geometry. Include a contemporary brass chandelier and subtle warm accent lighting. The design should resemble a professionally photographed luxury apartment, elegant, understated and photorealistic."
+    },
+    {
+      "id": 7,
+      "style": "Rich Modern Arabic",
+      "prompt": "Stage this room with a sophisticated modern Arabic aesthetic while keeping the existing architecture and proportions completely unchanged. Add a deep beige or caramel-colored sofa with decorative cushions, a large patterned rug featuring subtle contemporary Arabic geometric motifs, a round wooden coffee table and a stylish television mounted on the wall. Add framed artwork, ceramic vases, books, decorative objects and lush indoor plants. Introduce elegant brass lighting fixtures, a contemporary chandelier and warm floor lamps. Combine modern furniture with subtle traditional Middle Eastern influences. Photorealistic, luxurious and tasteful."
+    },
+    {
+      "id": 8,
+      "style": "Modern Moroccan Arabic",
+      "prompt": "Redesign this room with a contemporary Arabic and Moroccan-inspired interior design. Keep the original architecture, walls, windows, doors, flooring, proportions and camera perspective unchanged. Add a comfortable cream-colored sofa with textured cushions, a handcrafted-looking wooden coffee table, a soft woven rug with subtle geometric Moroccan patterns, decorative ceramic objects and large green plants. Add contemporary framed artwork, a modern television and a refined pendant chandelier. Use warm beige, ivory, terracotta, walnut and muted bronze accents. Sophisticated, modern, warm and photorealistic."
+    },
+    {
+      "id": 9,
+      "style": "Modern Upscale Arabic Apartment",
+      "prompt": "Turn this room into a sophisticated contemporary Arabic luxury apartment. Preserve the exact room dimensions, architectural elements, perspective and existing natural light. Add a large curved cream sofa, a sculptural marble coffee table, a premium neutral rug, a minimalist wall-mounted television and a sleek low media console. Add large-scale contemporary artwork with subtle Arabic geometric inspiration, elegant decorative accessories, a tall indoor plant and a designer floor lamp. Add a dramatic but tasteful modern chandelier. Use soft beige, cream, stone, walnut and brushed brass tones. High-end interior photography, realistic materials, natural shadows and photorealistic virtual staging."
+    },
+    {
+      "id": 10,
+      "style": "Signature Modern Arabic",
+      "prompt": "Create a beautifully designed modern Arabic living room from this original room image. Keep the architecture, walls, ceiling, windows, doors, floor, room proportions and camera perspective exactly unchanged. Furnish the room with an elegant oversized beige sofa, a sophisticated wooden and stone coffee table, a large luxurious textured rug, a modern television and a minimalist media console. Add contemporary Arabic-inspired artwork, sculptural decorative pieces, ceramic vases, books and lush indoor plants. Include a statement chandelier, elegant table lamps and subtle ambient lighting. Use a harmonious palette of ivory, sand, warm beige, walnut, stone and subtle brass. The final result should look like a professionally staged luxury real-estate photograph: realistic, elegant, spacious, balanced and highly photorealistic."
+    }
+  ],
+  "bedroom_prompts": [
+    {
+      "id": 1,
+      "style": "Warm Modern Arabic Bedroom",
+      "prompt": "Transform this room into a sophisticated modern Arabic bedroom while preserving the exact architecture, proportions, walls, windows, doors, flooring and camera perspective. Add an elegant upholstered bed in warm beige fabric, premium neutral bedding, two wooden bedside tables with modern lamps, a large soft area rug and subtle contemporary Middle Eastern artwork. Add a few refined decorative objects and a tall indoor plant. Use warm beige, cream, sand, walnut and subtle brass accents. Keep the room spacious, elegant, natural and photorealistic."
+    },
+    {
+      "id": 2,
+      "style": "Luxury Arabic Bedroom",
+      "prompt": "Redesign this room as a luxurious contemporary Arabic bedroom without changing the original architecture, layout, proportions, windows, doors or flooring. Add a large king-size bed with a sophisticated cream upholstered headboard, layered beige and ivory bedding, elegant bedside tables and designer bedside lamps. Add a premium textured rug, a refined bench at the foot of the bed and large contemporary artwork inspired by Middle Eastern geometry. Use natural stone, walnut, linen and subtle brass details. High-end luxury apartment, elegant and photorealistic."
+    },
+    {
+      "id": 3,
+      "style": "Minimalist Arabic Bedroom",
+      "prompt": "Create a minimalist modern Arabic bedroom while keeping the existing room architecture, geometry, proportions, windows, doors, flooring and perspective completely unchanged. Add a low-profile beige bed with simple premium bedding, two minimalist wooden nightstands and warm bedside lamps. Add one large abstract artwork with subtle Arabic geometric influences and a soft neutral rug. Include one elegant indoor plant. Use cream, sand, beige, light wood and muted earth tones. Clean, calm, sophisticated, spacious and photorealistic."
+    },
+    {
+      "id": 4,
+      "style": "Contemporary Middle Eastern Bedroom",
+      "prompt": "Transform this room into an elegant contemporary Middle Eastern bedroom while preserving the exact original architecture and camera perspective. Add a large upholstered bed with a curved beige headboard, luxurious neutral bedding and decorative cushions. Add elegant wooden nightstands, modern table lamps, a large textured rug and a stylish upholstered bench. Add contemporary Arabic-inspired artwork above the bed and subtle decorative accessories. Use warm neutral colors, walnut wood, stone and brushed brass. Sophisticated, luxurious and photorealistic."
+    },
+    {
+      "id": 5,
+      "style": "Cozy Modern Arabic Bedroom",
+      "prompt": "Virtually stage this room as a cozy modern Arabic bedroom. Do not modify the walls, windows, doors, ceiling, floor, room proportions or camera perspective. Add a comfortable cream upholstered bed with layered textured bedding, soft decorative cushions and a warm throw. Add wooden bedside tables, elegant lamps, a woven neutral rug and framed contemporary artwork. Include a large plant in a refined ceramic planter and a few tasteful decorative objects. Create a warm, inviting, refined and photorealistic bedroom."
+    },
+    {
+      "id": 6,
+      "style": "Modern Arabic Master Bedroom",
+      "prompt": "Create a high-end modern Arabic master bedroom from this image while keeping all architectural elements and the original perspective unchanged. Add a large luxurious bed with a tall upholstered headboard, premium ivory bedding and elegant cushions. Add matching walnut bedside tables, sophisticated lamps, a large neutral rug and a modern dresser. Add a large contemporary artwork with subtle Middle Eastern influences and a decorative indoor plant. Include warm indirect lighting and subtle brass accents. Professional luxury real-estate photography, realistic materials and photorealistic staging."
+    },
+    {
+      "id": 7,
+      "style": "Earth-Tone Arabic Bedroom",
+      "prompt": "Redesign this room with a sophisticated earth-tone modern Arabic bedroom aesthetic. Preserve the exact architecture, room layout, windows, doors, floor, ceiling and camera angle. Add a warm taupe upholstered bed, textured cream bedding, walnut bedside tables and elegant ceramic lamps. Add a large rug with subtle contemporary Arabic geometric patterns, framed artwork and natural decorative objects. Include a large olive tree or indoor plant. Use sand, terracotta, beige, walnut and muted bronze tones. Warm, sophisticated, balanced and photorealistic."
+    },
+    {
+      "id": 8,
+      "style": "Modern Arabic Bedroom with TV",
+      "prompt": "Virtually stage this room as a luxurious modern Arabic bedroom while preserving the original architecture, proportions, perspective, windows, doors and flooring. Add a large cream upholstered bed with premium bedding, elegant bedside tables and warm table lamps. Place a slim modern television naturally on the main wall with a minimalist media console or wall-mounted installation. Add a large textured rug, contemporary Middle Eastern artwork, decorative objects and an indoor plant. Use ivory, beige, walnut, stone and subtle brass accents. Keep the design elegant, realistic and uncluttered."
+    },
+    {
+      "id": 9,
+      "style": "Modern Moroccan Bedroom",
+      "prompt": "Transform this room into a contemporary Arabic and Moroccan-inspired bedroom while keeping the original architecture, dimensions, windows, doors, flooring and perspective unchanged. Add a cream upholstered bed with textured neutral bedding, wooden bedside tables, warm decorative lamps and a woven rug featuring subtle Moroccan geometric patterns. Add handcrafted-looking ceramic objects, contemporary wall artwork and a large green plant. Use ivory, sand, terracotta, warm beige, walnut and muted bronze. Modern, refined, warm and photorealistic."
+    },
+    {
+      "id": 10,
+      "style": "Signature Luxury Arabic Bedroom",
+      "prompt": "Create a beautifully designed luxury modern Arabic bedroom from this original room image. Keep the architecture, walls, ceiling, windows, doors, floor, room proportions and camera perspective exactly unchanged. Add an oversized elegant upholstered bed, premium layered bedding, sophisticated bedside tables, designer lamps and a large luxurious textured rug. Add contemporary Arabic-inspired artwork, a stylish dresser, sculptural decorative pieces and a lush indoor plant. Include a refined chandelier and subtle ambient lighting. Use ivory, sand, beige, walnut, stone and brushed brass. Professionally staged luxury real-estate photography, balanced composition, realistic scale and highly photorealistic."
+    }
+  ],
+  "studio_prompts": [
+    {
+      "id": 1,
+      "style": "Warm Modern Arabic Studio",
+      "prompt": "Transform this studio apartment into a sophisticated modern Arabic interior while preserving the exact architecture, proportions, walls, windows, doors, flooring and camera perspective. Add a comfortable beige sofa, a low wooden coffee table, a modern upholstered bed with neutral bedding and a compact dining table with elegant chairs. Add a soft textured rug, contemporary Arabic-inspired artwork, indoor plants and warm decorative lighting. Use cream, sand, beige, walnut and subtle brass accents. Keep the studio spacious, functional, elegant and photorealistic."
+    },
+    {
+      "id": 2,
+      "style": "Luxury Arabic Studio",
+      "prompt": "Virtually stage this studio apartment as a high-end contemporary Arabic interior. Keep the original architecture, room dimensions, windows, doors, flooring and perspective completely unchanged. Add a luxurious cream sofa, a sculptural marble coffee table, an elegant bed with a refined upholstered headboard and a compact dining area. Add a wall-mounted television, a premium neutral rug, contemporary Middle Eastern artwork and a large indoor plant. Include a modern statement pendant light. Use ivory, taupe, sand, walnut and brushed brass. Sophisticated, luxurious and photorealistic."
+    },
+    {
+      "id": 3,
+      "style": "Minimalist Arabic Studio",
+      "prompt": "Redesign this studio as a minimalist modern Arabic apartment while preserving the exact architecture, layout, proportions, windows, doors, flooring and camera perspective. Add a compact beige sofa, a simple round wooden coffee table, a comfortable bed with neutral bedding and a small dining table with two chairs. Add one subtle geometric rug, one large contemporary artwork and a single indoor plant. Use cream, sand, light wood and warm beige tones. Maximize the feeling of space and maintain a clean, sophisticated and photorealistic appearance."
+    },
+    {
+      "id": 4,
+      "style": "Contemporary Middle Eastern Studio",
+      "prompt": "Create a contemporary Middle Eastern luxury studio from this image without changing the original architecture or room proportions. Add a curved taupe sofa, a sculptural coffee table, a sophisticated upholstered bed, a compact dining table and elegant chairs. Add a minimalist television, contemporary Arabic-inspired wall artwork, decorative ceramics and a large indoor plant. Include a refined chandelier or pendant light with warm illumination. Use natural stone, walnut, linen, beige and subtle brass. Functional, luxurious, balanced and photorealistic."
+    },
+    {
+      "id": 5,
+      "style": "Cozy Arabic Studio",
+      "prompt": "Virtually furnish this studio apartment as a warm and inviting modern Arabic home. Do not modify the existing walls, windows, doors, floor, ceiling, proportions or camera perspective. Add a comfortable cream sofa, a small wooden coffee table, a cozy bed with layered neutral bedding and a compact dining area. Add a large soft rug, warm floor and table lamps, framed artwork, decorative cushions and several indoor plants. Use beige, cream, warm brown, terracotta and natural wood. Create a cozy but uncluttered space with realistic scale and photorealistic materials."
+    },
+    {
+      "id": 6,
+      "style": "Upscale Arabic Studio Apartment",
+      "prompt": "Transform this studio into an upscale contemporary Arabic apartment while keeping every architectural element exactly unchanged. Add a large elegant sofa, a marble coffee table, a premium upholstered bed, a minimalist dining table and sophisticated dining chairs. Add a wall-mounted television with a sleek media console, a large textured rug and contemporary Middle Eastern artwork. Include a statement chandelier, subtle ambient lighting and a tall indoor plant. Use ivory, taupe, sand, walnut, stone and brushed brass. High-end real-estate interior photography, natural shadows and photorealistic staging."
+    },
+    {
+      "id": 7,
+      "style": "Modern Arabic Studio with Dining Area",
+      "prompt": "Stage this studio apartment in a refined modern Arabic style while preserving the exact room structure, architecture, perspective, windows, doors and flooring. Create a clear living area with a sophisticated beige sofa and coffee table, a comfortable sleeping area with an elegant upholstered bed, and a small dining area with a round wooden table and modern chairs. Add a neutral geometric rug, contemporary artwork, decorative ceramics and a few indoor plants. Use warm beige, cream, walnut and muted brass. Functional, spacious, elegant and photorealistic."
+    },
+    {
+      "id": 8,
+      "style": "Modern Moroccan Studio",
+      "prompt": "Redesign this studio with a sophisticated contemporary Arabic and Moroccan-inspired aesthetic. Keep the original architecture, walls, windows, doors, flooring, proportions and camera perspective unchanged. Add a cream sofa, a low wooden coffee table, a modern bed with textured neutral bedding and a compact dining area. Add a woven Moroccan-inspired rug with subtle geometric patterns, handcrafted ceramic accessories, contemporary artwork, a wall-mounted television and lush green plants. Use ivory, sand, terracotta, walnut and muted bronze. Warm, stylish, modern and photorealistic."
+    },
+    {
+      "id": 9,
+      "style": "Luxury Small Arabic Studio",
+      "prompt": "Turn this small studio into an elegant luxury modern Arabic apartment while preserving the exact architecture, dimensions, windows, doors, flooring and perspective. Use carefully scaled furniture: a compact curved cream sofa, a small stone coffee table, a refined upholstered bed, a compact dining table and two elegant chairs. Add a slim wall-mounted television, a premium textured rug, one large artwork and a carefully placed indoor plant. Add warm modern lighting and subtle brass details. Make the space feel larger, luxurious, functional and photorealistic."
+    },
+    {
+      "id": 10,
+      "style": "Signature Modern Arabic Studio",
+      "prompt": "Create a beautifully designed modern Arabic studio apartment from this original room image. Keep the architecture, walls, ceiling, windows, doors, floor, room proportions and camera perspective exactly unchanged. Add an elegant beige sofa, a sophisticated coffee table, a premium upholstered bed, a compact dining table and modern chairs. Add a minimalist television, contemporary Arabic-inspired artwork, sculptural decorative objects, ceramic vases and lush indoor plants. Include a statement chandelier, elegant lamps and warm ambient lighting. Use ivory, sand, beige, walnut, stone and subtle brass. The final result should look like a professionally staged luxury real-estate photograph: realistic, spacious, functional, balanced and highly photorealistic."
+    }
+  ]
+}
