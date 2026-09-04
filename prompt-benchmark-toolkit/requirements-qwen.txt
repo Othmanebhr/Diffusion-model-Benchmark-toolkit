@@ -1,0 +1,11 @@
+# Environnement dédié au test de Qwen-Image-Edit-2511 via adapters/qwen_image_edit.py.
+# A installer dans un venv SEPARE de celui d'Image_docker (qui exclut diffusers
+# volontairement pour HiDream-O1). Ne pas mélanger les deux venvs sur le pod.
+
+torch==2.11.0
+git+https://github.com/huggingface/diffusers
+transformers>=4.51.0
+accelerate>=0.34.0
+pillow>=10.0.0
+safetensors
+huggingface_hub<1.0,>=0.34.0

@@ -1,179 +1,136 @@
-# Virtual Staging Prompt Benchmark Toolkit
+# Modern Arabic Prompt Benchmark Toolkit
 
-Local, model-side tooling for compiling the StagingOS prompt workbook, building reproducible benchmark plans, running them against the **internal Python generation function**, and ranking the results.
+This standalone toolkit evaluates the 30 supplied Modern Arabic prompts against
+image-generation models running on a RunPod pod — either the internal HiDream-O1
+pipeline or a candidate replacement (currently Qwen-Image-Edit-2511).
 
-This directory is intentionally independent from the StagingOS Next.js application. It does not add a FastAPI endpoint and it does not write benchmark jobs into the StagingOS database.
+The prompt source of truth is:
 
-## What is included
+    catalog/modern_arabic_prompts_30.json
 
-- `benchmark_cli.py`: command-line entry point.
-- `prompt_benchmark/xlsx_catalog.py`: dependency-free XLSX reader and compiler.
-- `prompt_benchmark/catalog.py`: runtime prompt assembler.
-- `prompt_benchmark/manifest.py`: deterministic benchmark-plan builder.
-- `prompt_benchmark/runner.py`: resumable sequential runner.
-- `prompt_benchmark/evaluation.py`: evaluation CSV and ranking generator.
-- `adapters/internal_model_template.py`: the only file that must be connected to the actual model pipeline.
-- `config/source_manifest.example.json`: expected source-image manifest.
-- `config/finalists.example.json`: optional reduced candidate set for later rounds.
-- `schemas/`: JSON schemas for the compiled catalog and run manifest.
+It contains exactly:
 
-Only the Python standard library is required by the toolkit. The real model adapter can, of course, use PyTorch, Diffusers, Pillow, or any dependency already present in the RunPod image.
+- 10 living/dining-room prompts;
+- 10 bedroom prompts;
+- 10 studio prompts.
 
-## Recommended placement
+The toolkit passes each prompt value to the model exactly as stored. It does not add
+guardrails, room modules, furniture anchors, prefixes or suffixes.
 
-Copy this directory into the Python/model repository running on RunPod, for example:
+## Files
 
-```text
-virtual-staging-model/
-  app/
-  prompt-benchmark-toolkit/
-```
+- benchmark_cli.py: build, run and evaluate a benchmark.
+- prompt_benchmark/catalog.py: validate and normalize technical identifiers around
+  the source JSON without changing prompt text.
+- prompt_benchmark/manifest.py: create deterministic test cases.
+- prompt_benchmark/runner.py: sequential, resumable execution.
+- prompt_benchmark/evaluation.py: blind evaluation template and ranking.
+- adapters/internal_model_template.py: template to wire up the internal HiDream-O1
+  pod function (not yet implemented — copy it to a real adapter when you need a
+  HiDream baseline run).
+- adapters/qwen_image_edit.py: ready-to-use adapter for Qwen-Image-Edit-2511
+  (diffusers `QwenImageEditPlusPipeline`). See its docstring for the required env
+  vars (`QWEN_MODEL_PATH`, `QWEN_CPU_OFFLOAD`, `QWEN_TRUE_CFG_SCALE`).
+- requirements-qwen.txt: dependencies for the Qwen adapter. Install in a venv
+  separate from the HiDream pod's — that one deliberately excludes `diffusers`.
+- config/source_manifest.json: source-image configuration (edit the paths for
+  your pod before running).
+- config/finalists.example.json: example reduced prompt selection (one variant
+  per room type — use it for a cheap smoke test before a full 30-prompt run).
 
-Do not expose the benchmark runner as a public FastAPI route. It should run from the Pod terminal or as an internal maintenance command.
+The toolkit is independent from the StagingOS Next.js application and should not be
+exposed as a public FastAPI endpoint.
 
-## 1. Compile the workbook
+## 1. Prepare source images
 
-```bash
-cd prompt-benchmark-toolkit
+Edit `config/source_manifest.json` and set an absolute path (on the pod) for at
+least one test image per room type:
 
-python3 benchmark_cli.py compile \
-  --workbook /path/to/virtual_staging_modular_prompt_benchmark_v3.xlsx \
-  --output catalog/prompt_catalog_v3.json \
-  --report catalog/catalog_validation_report.json
-```
+- living_diner_room;
+- bedroom;
+- studio.
 
-The compiler validates:
+Every source image is tested only with prompts written for its room type.
 
-- 6 staging styles and their numeric StagingOS/RunPod mapping;
-- 30 variants per staging style;
-- 3 room types;
-- furniture-anchor coverage;
-- No Furniture variants;
-- pilot matrices;
-- exact reconstruction of the assembled standard instructions;
-- evaluation weights from the workbook.
+## 2. Build the manifest
 
-The generated catalog preserves both identifiers:
+From the toolkit directory:
 
-- semantic ID: `MA-P01`;
-- StagingOS technical reference: `P.1.1`.
+    python3 benchmark_cli.py plan \
+      --catalog catalog/modern_arabic_prompts_30.json \
+      --sources config/source_manifest.json \
+      --output runs/modern-arabic-v1/manifest.json \
+      --run-id modern-arabic-v1 \
+      --seeds 42 \
+      --model-version hdream-o1
 
-## 2. Prepare benchmark source images
+With one source image for each of the three room types and one seed, this produces 30
+cases. Two seeds produce 60 cases.
 
-Copy `config/source_manifest.example.json` and replace its paths with real files on the Pod.
+Technical identifiers are generated deterministically:
 
-For the first smoke test, use one representative image for each room type:
+- living/dining room: MA-LR-P01 to MA-LR-P10;
+- bedroom: MA-BR-P01 to MA-BR-P10;
+- studio: MA-ST-P01 to MA-ST-P10;
+- prompt references: P.1.1 to P.1.30.
 
-- `living_diner_room`;
-- `bedroom`;
-- `studio`.
+These identifiers are metadata only. They do not alter prompt text.
 
-All candidate prompts for a room type are evaluated against the exact same image and inference parameters.
+## 3. Test a reduced candidate set
 
-## 3. Build the first benchmark plan
+Pass a candidate file containing globally unique variant IDs:
 
-```bash
-python3 benchmark_cli.py plan \
-  --catalog catalog/prompt_catalog_v3.json \
-  --sources config/source_manifest.json \
-  --output runs/smoke-v3/manifest.json \
-  --run-id smoke-v3 \
-  --seeds 42
-```
+    python3 benchmark_cli.py plan \
+      --catalog catalog/modern_arabic_prompts_30.json \
+      --sources config/source_manifest.json \
+      --candidates config/finalists.example.json \
+      --output runs/finalists/manifest.json \
+      --run-id finalists \
+      --seeds 42
 
-With one source image per room type, the complete pilot contains:
+## 4. Connect the model
 
-- 360 staging cases;
-- 60 No Furniture cases;
-- 420 generated images in total.
+For Qwen-Image-Edit-2511, `adapters/qwen_image_edit.py` is ready — just install
+`requirements-qwen.txt` in its own venv and set `QWEN_MODEL_PATH` to the local
+weights directory (see its docstring).
 
-Use `--no-include-no-furniture` to benchmark only the six furnished styles.
+For a HiDream-O1 baseline run, copy adapters/internal_model_template.py to a new
+adapter and implement its generate(request) function. See docs/internal-model-adapter.md.
 
-For a reduced later round, pass a finalist file:
+Either way, the adapter must use request['prompt'] exactly, and must call the model
+function directly in-process rather than the public FastAPI route.
 
-```bash
-python3 benchmark_cli.py plan \
-  --catalog catalog/prompt_catalog_v3.json \
-  --sources config/source_manifest.json \
-  --candidates config/finalists.json \
-  --output runs/finalists-v3/manifest.json \
-  --run-id finalists-v3 \
-  --seeds 42,137
-```
+## 5. Dry-run
 
-The manifest freezes the complete assembled prompt, its SHA-256, source-image SHA-256, model parameters, catalog version, and test-case identity.
+    python3 benchmark_cli.py run \
+      --manifest runs/modern-arabic-v1/manifest.json \
+      --output-dir runs/modern-arabic-v1/output \
+      --dry-run
 
-## 4. Connect the internal model function
+## 6. Run on the Pod
 
-Copy `adapters/internal_model_template.py` to a model-specific file, such as:
+    python3 benchmark_cli.py run \
+      --manifest runs/modern-arabic-v1/manifest.json \
+      --output-dir runs/modern-arabic-v1/output \
+      --adapter adapters.qwen_image_edit:generate
 
-```text
-adapters/staging_model.py
-```
+Swap the `--adapter` value for your HiDream adapter's `module:function` path to run
+the same manifest against the baseline instead.
 
-Implement its single function:
+The run is sequential and resumable. Re-running the same command skips successful
+cases already present in results.jsonl.
 
-```python
-def generate(request: dict) -> dict:
-    ...
-```
+## 7. Evaluate and rank
 
-The adapter receives the exact source path, assembled prompt, room type, style, variant, seed, and inference parameters. It must call the **same internal generation function used by FastAPI**, then return image bytes or an output path.
+    python3 benchmark_cli.py evaluation-template \
+      --results runs/modern-arabic-v1/output/results.jsonl \
+      --output runs/modern-arabic-v1/evaluation.csv
 
-Do not call StagingOS and do not call the public `/generate` endpoint from the benchmark. Direct internal invocation makes prompt selection, seed control, metadata, and failures reproducible.
+    python3 benchmark_cli.py score \
+      --evaluation runs/modern-arabic-v1/evaluation.csv \
+      --ranking runs/modern-arabic-v1/ranking.csv \
+      --finalists runs/modern-arabic-v1/finalists.json \
+      --top-k 3
 
-## 5. Dry-run before using the GPU
-
-```bash
-python3 benchmark_cli.py run \
-  --manifest runs/smoke-v3/manifest.json \
-  --output-dir runs/smoke-v3/output \
-  --dry-run
-```
-
-The dry-run writes the resolved cases and prompts without invoking the model.
-
-## 6. Run the benchmark
-
-```bash
-python3 benchmark_cli.py run \
-  --manifest runs/smoke-v3/manifest.json \
-  --output-dir runs/smoke-v3/output \
-  --adapter adapters.staging_model:generate
-```
-
-The runner is sequential by default, which is safer for one persistent GPU Pod. It is resumable: rerunning the same command skips successful cases already recorded in `results.jsonl`.
-
-## 7. Create the human-evaluation file
-
-```bash
-python3 benchmark_cli.py evaluation-template \
-  --results runs/smoke-v3/output/results.jsonl \
-  --output runs/smoke-v3/evaluation.csv
-```
-
-Fill the human scores from 1 to 5. Reviewers should not see the variant names while judging images; randomize or mask those labels in the review interface.
-
-Then produce rankings:
-
-```bash
-python3 benchmark_cli.py score \
-  --evaluation runs/smoke-v3/evaluation.csv \
-  --ranking runs/smoke-v3/ranking.csv \
-  --finalists runs/smoke-v3/finalists.json \
-  --top-k 5
-```
-
-Architecture preservation and camera/perspective are hard gates: a score below 4 rejects the result even if its weighted average is high.
-
-## Production prompt policy after the benchmark
-
-Keep a small approved pool per style rather than one global prompt:
-
-- initial generation chooses a prompt from the approved pool;
-- regeneration chooses an approved prompt not already used for that photo/style;
-- after exhausting the pool, selection may wrap;
-- No Furniture should normally use one highly reliable approved prompt and remains non-regenerable in StagingOS.
-
-The production API contract can remain unchanged: StagingOS only needs the returned `P.y.z` reference. The Python prompt catalog owns the actual prompt text and the mapping to semantic IDs such as `MA-P01`.
-
+Top-k keeps up to that many passing prompts per room type. Architecture preservation
+and camera perspective remain hard quality gates.

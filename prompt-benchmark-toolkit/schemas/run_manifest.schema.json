@@ -32,6 +32,7 @@
           "room_type",
           "style_id",
           "variant_id",
+          "variant_label",
           "prompt_ref",
           "seed",
           "prompt",
@@ -42,4 +43,3 @@
   },
   "additionalProperties": true
 }
-

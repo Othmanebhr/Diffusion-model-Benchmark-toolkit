@@ -18,7 +18,7 @@ IDENTITY_COLUMNS = [
     'style_id',
     'variant_id',
     'prompt_ref',
-    'anchor_id',
+    'variant_label',
     'seed',
     'model_version',
     'catalog_version',
@@ -81,7 +81,7 @@ def score_evaluations(
     with evaluation_path.open('r', encoding='utf-8-sig', newline='') as handle:
         rows = list(csv.DictReader(handle))
 
-    grouped: dict[tuple[str, str], list[dict[str, Any]]] = defaultdict(list)
+    grouped: dict[tuple[str, str, str], list[dict[str, Any]]] = defaultdict(list)
     for row in rows:
         scores = _read_scores(row)
         if not scores:
@@ -94,13 +94,14 @@ def score_evaluations(
         )
         row['weighted_score'] = weighted
         row['hard_gate_pass'] = hard_pass
-        grouped[(row['style_id'], row['variant_id'])].append(row)
+        grouped[(row['style_id'], row['room_type'], row['variant_id'])].append(row)
 
     ranking = []
-    for (style_id, variant_id), values in grouped.items():
+    for (style_id, room_type, variant_id), values in grouped.items():
         ranking.append(
             {
                 'style_id': style_id,
+                'room_type': room_type,
                 'variant_id': variant_id,
                 'evaluated_cases': len(values),
                 'average_weighted_score': round(
@@ -115,6 +116,7 @@ def score_evaluations(
     ranking.sort(
         key=lambda row: (
             row['style_id'],
+            row['room_type'],
             -float(row['hard_gate_pass_rate']),
             -float(row['average_weighted_score']),
             row['variant_id'],
@@ -125,6 +127,7 @@ def score_evaluations(
     with ranking_path.open('w', encoding='utf-8-sig', newline='') as handle:
         fieldnames = [
             'style_id',
+            'room_type',
             'variant_id',
             'evaluated_cases',
             'average_weighted_score',
@@ -135,19 +138,16 @@ def score_evaluations(
         writer.writeheader()
         writer.writerows(ranking)
 
-    by_style: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    by_room: dict[str, list[dict[str, Any]]] = defaultdict(list)
     for row in ranking:
         if float(row['hard_gate_pass_rate']) == 1.0:
-            by_style[row['style_id']].append(row)
+            by_room[row['room_type']].append(row)
     finalists = {
-        'style_variant_ids': [
+        'variant_ids': [
             row['variant_id']
-            for style_id in sorted(key for key in by_style if key != 'empty')
-            for row in by_style[style_id][:top_k]
-        ],
-        'no_furniture_variant_ids': [
-            row['variant_id'] for row in by_style.get('empty', [])[:top_k]
-        ],
+            for room_type in sorted(by_room)
+            for row in by_room[room_type][:top_k]
+        ]
     }
     finalists_path.parent.mkdir(parents=True, exist_ok=True)
     finalists_path.write_text(
@@ -182,4 +182,3 @@ def hashlib_key(value: str) -> str:
     import hashlib
 
     return hashlib.sha256(value.encode('utf-8')).hexdigest()
-

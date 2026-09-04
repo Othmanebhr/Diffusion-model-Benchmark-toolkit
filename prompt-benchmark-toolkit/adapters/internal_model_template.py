@@ -7,7 +7,7 @@ def generate(request: dict[str, Any]) -> dict[str, Any]:
     """Connect this function to the same internal pipeline used by FastAPI.
 
     Input keys include:
-      source_path, prompt, room_type, style_id, style_number, variant_id,
+      source_path, prompt, room_type, style_id, style_number, variant_id, variant_label,
       prompt_ref, seed, inference, run_id, model_version, catalog_version.
 
     Supported return forms are documented below. This template deliberately
@@ -47,4 +47,3 @@ def generate(request: dict[str, Any]) -> dict[str, Any]:
 #        'extension': '.png',
 #        'metadata': {'gpu_seconds': 8.4, 'model_revision': 'abc123'},
 #    }
-

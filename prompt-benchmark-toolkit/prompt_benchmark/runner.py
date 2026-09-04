@@ -90,7 +90,6 @@ def _adapter_request(manifest: dict[str, Any], case: dict[str, Any]) -> dict[str
 
 def _result_identity(manifest: dict[str, Any], case: dict[str, Any]) -> dict[str, Any]:
     keys = (
-        'pilot_case_id',
         'source_image_id',
         'source_path',
         'source_sha256',
@@ -100,8 +99,8 @@ def _result_identity(manifest: dict[str, Any], case: dict[str, Any]) -> dict[str
         'style_number',
         'style_name',
         'variant_id',
+        'variant_label',
         'prompt_ref',
-        'anchor_id',
         'seed',
         'inference',
         'prompt_sha256',
@@ -191,4 +190,3 @@ def _successful_case_ids(path: Path) -> set[str]:
 def _append_jsonl(path: Path, value: dict[str, Any]) -> None:
     with path.open('a', encoding='utf-8') as handle:
         handle.write(json.dumps(value, ensure_ascii=False) + '\n')
-

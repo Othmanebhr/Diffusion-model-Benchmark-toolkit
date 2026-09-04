@@ -7,7 +7,6 @@ from pathlib import Path
 from prompt_benchmark.evaluation import create_evaluation_template, score_evaluations
 from prompt_benchmark.manifest import build_manifest
 from prompt_benchmark.runner import run_manifest
-from prompt_benchmark.xlsx_catalog import compile_workbook
 
 
 def csv_ints(value: str) -> list[int]:
@@ -24,12 +23,6 @@ def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description='Virtual staging prompt benchmark toolkit')
     commands = parser.add_subparsers(dest='command', required=True)
 
-    compile_command = commands.add_parser('compile', help='Compile the XLSX prompt library')
-    compile_command.add_argument('--workbook', type=Path, required=True)
-    compile_command.add_argument('--output', type=Path, required=True)
-    compile_command.add_argument('--report', type=Path, required=True)
-    compile_command.add_argument('--catalog-version', default='v3')
-
     plan_command = commands.add_parser('plan', help='Build a deterministic run manifest')
     plan_command.add_argument('--catalog', type=Path, required=True)
     plan_command.add_argument('--sources', type=Path, required=True)
@@ -37,7 +30,6 @@ def build_parser() -> argparse.ArgumentParser:
     plan_command.add_argument('--run-id', required=True)
     plan_command.add_argument('--seeds', type=csv_ints, default=[42])
     plan_command.add_argument('--candidates', type=Path)
-    plan_command.add_argument('--include-no-furniture', action=argparse.BooleanOptionalAction, default=True)
     plan_command.add_argument('--model-version', default='unconfigured')
     plan_command.add_argument('--temperature', type=float)
     plan_command.add_argument('--top-p', type=float)
@@ -71,19 +63,6 @@ def build_parser() -> argparse.ArgumentParser:
 def main() -> None:
     args = build_parser().parse_args()
 
-    if args.command == 'compile':
-        report = compile_workbook(
-            workbook_path=args.workbook,
-            output_path=args.output,
-            report_path=args.report,
-            catalog_version=args.catalog_version,
-        )
-        print(
-            f"Compiled {report['style_variant_count']} style variants and "
-            f"{report['no_furniture_variant_count']} No Furniture variants."
-        )
-        return
-
     if args.command == 'plan':
         inference = {
             key: value
@@ -104,7 +83,6 @@ def main() -> None:
             run_id=args.run_id,
             seeds=args.seeds,
             candidates_path=args.candidates,
-            include_no_furniture=args.include_no_furniture,
             model_version=args.model_version,
             inference=inference,
         )
@@ -142,4 +120,3 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
-
